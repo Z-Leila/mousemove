@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+</head>
+<style>
+   .box{
+   	  width: 100%;
+   	  height: 560px;
+   	  background: #121213;
+   }
+   .box img{
+   	    width: 800px;
+        position: absolute;
+        right: -60px;
+   }
+</style>
+<body>
+
+	<div class="demo">
+      <div class="box">
+         <img src="img/1.png" alt="" />
+      </div>
+    </div>
+
+</body>
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+
+<script type="text/javascript">
+	var x = $(document).width()/2;
+	var y = 560/2;
+	var rotate_max_x = 20;
+	var rotate_max_y = 20;
+	$(function(e){
+		var box=$('.box');
+		var img=$('img');
+		var ev = e || event;
+		var ss=e.clientX;
+		box.mousemove(function(e){
+			var x_client = e.clientX;
+			var y_client = e.clientY;
+			rotate_x = 0-(x_client - x) / x * rotate_max_x;
+			rotate_y = 0-(y_client - y) / y * rotate_max_y;
+			img.css("transform","rotateX("+rotate_y+"deg) rotateY("+rotate_x+"deg)");
+        });
+	});
+</script>
+</html>
